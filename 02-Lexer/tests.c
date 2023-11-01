@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include "AFD.c"
+#include "reconocedor.h"
 
 int main() {
     char** resultado1 = analizarCadena("1+1");
