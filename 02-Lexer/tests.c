@@ -12,7 +12,7 @@ int main() {
     char** cadenaSinErrores = analizarCadena("1+1");
 
     assert(strcmp (cadenaSinErrores[0], "Constante numerica") == 0);
-    assert(strcmp (cadenaSinErrores[1], "Operador")) == 0;
+    assert(strcmp (cadenaSinErrores[1], "Operador") == 0);
     assert(strcmp (cadenaSinErrores[2], "Constante numerica")== 0);
 
     char** cadenaConIdentificadorInvalido = analizarCadena("1+.");
