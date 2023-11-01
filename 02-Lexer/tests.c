@@ -1,35 +1,35 @@
 #include <stdio.h>
 #include <assert.h>
-#include "AFD.c"
+#include <string.h>
 #include "reconocedor.h"
 
 int main() {
     char** resultado1 = analizarCadena("1+1");
 
-    assert(resultado1[0] == "Constante Numerica");
+    assert(strcmp (resultado1[0], "Constante numerica") == 0);
 
 
     char** cadenaSinErrores = analizarCadena("1+1");
 
-    assert(cadenaSinErrores[0] == "Constante numerica");
-    assert(cadenaSinErrores[1] == "Operador");
-    assert(cadenaSinErrores[2] == "Constante numerica");
+    assert(strcmp (cadenaSinErrores[0], "Constante numerica") == 0);
+    assert(strcmp (cadenaSinErrores[1], "Operador")) == 0;
+    assert(strcmp (cadenaSinErrores[2], "Constante numerica")== 0);
 
     char** cadenaConIdentificadorInvalido = analizarCadena("1+.");
-    assert(cadenaConIdentificadorInvalido[0] == "Constante numerica");
-    assert(cadenaConIdentificadorInvalido[1] == "Operador");
+    assert(strcmp (cadenaConIdentificadorInvalido[0], "Constante numerica") == 0);
+    assert(strcmp (cadenaConIdentificadorInvalido[1], "Operador") == 0);
     assert(strstr(cadenaConIdentificadorInvalido[2], "Error") != NULL);
 
     
     char** cadenaValidaSinOperadores = analizarCadena("123");
-    assert(cadenaValidaSinOperadores[0] == "Constante numerica");
-    assert(cadenaValidaSinOperadores[1] == "Constante numerica");
-    assert(cadenaValidaSinOperadores[2] == "Constante numerica");
+    assert(strcmp (cadenaValidaSinOperadores[0], "Constante numerica") == 0);
+    assert(strcmp (cadenaValidaSinOperadores[1], "Constante numerica") == 0);
+    assert(strcmp (cadenaValidaSinOperadores[2], "Constante numerica") == 0);
 
     char** cadenaDeOperadoresValida = analizarCadena("+*/");
-    assert(cadenaDeOperadoresValida[0] == "Operador");
-    assert(cadenaDeOperadoresValida[1] == "Operador");
-    assert(cadenaDeOperadoresValida[2] == "Operador");
+    assert(strcmp (cadenaDeOperadoresValida[0], "Operador") == 0);
+    assert(strcmp (cadenaDeOperadoresValida[1], "Operador") == 0);
+    assert(strcmp (cadenaDeOperadoresValida[2], "Operador") == 0);
 
     char** cadenaDeLetrasInvalida = analizarCadena("ABC");
     assert(strstr(cadenaDeLetrasInvalida[0], "Error") != NULL);
